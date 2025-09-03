@@ -123,6 +123,21 @@ RSE = √[Σ(yᵢ - ŷᵢ)² / (n - k - 1)]
 RMSE = √[Σ(yᵢ - ŷᵢ)² / n]
 ```
 
+##### RMSE Interpretation
+
+- The **Root Mean Squared Error (RMSE)** on the training data is **11.6**.  
+
+**Meaning:**  
+- On average, model predictions on training data differ from the actual values by about **11.6 points**.  
+- Example:  
+  - If the model lr_1 predicts a **Spending Score = 78** on training data,  
+  - The actual score is likely to fall within the range:  
+
+    **78 ± 11.6 → [89.6 , 66.4]**
+
+##### Key Insight 
+- A **smaller RMSE** indicates a more accurate model.
+
 **Mean Absolute Error (MAE)**
 ```
 MAE = Σ|yᵢ - ŷᵢ| / n
@@ -189,11 +204,11 @@ This practical example demonstrates how linear regression output should be inter
 - **F-statistic = 174.3**
 
 ### Variable Analysis Table
-| Variable | Coeff | Std Err | t-value | P>|t| | [0.025 | 0.975] |
-|----------|-------|---------|---------|-------|--------|---------|
-| temp | 0.4725 | 0.037 | 12.832 | 0.000 | 0.400 | 0.545 |
-| season_summer | 0.106 | 0.022 | 4.853 | 0.000 | 0.063 | 0.149 |
-| working_day | 0.0178 | 0.009 | 1.946 | 0.052 | -0.000 | 0.036 |
+| Variable      | Coefficient | Std Error | t-value | P-value | 95% CI Lower | 95% CI Upper |
+|---------------|-------------|-----------|---------|---------|--------------|--------------|
+| temp          | 0.4725      | 0.037     | 12.832  | 0.000   | 0.400        | 0.545        |
+| season_summer | 0.1060      | 0.022     | 4.853   | 0.000   | 0.063        | 0.149        |
+| working_day   | 0.0178      | 0.009     | 1.946   | 0.052   | 0.000        | 0.036        |
 
 ### Key Observations from Housing Dataset
 1. **Temperature coefficient (0.4725)** is highly significant with very low p-value (0.000)
