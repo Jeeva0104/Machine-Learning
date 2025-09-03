@@ -51,19 +51,21 @@ Linear regression relies on four critical assumptions:
 ### 1. Linear Relationship between x and y
 - There exists a linear relationship between independent and dependent variables
 - The relationship can be represented by a straight line
+- ![Regression Residual Plot](images/assumption-1.png)
 
 ### 2. Error terms are normally distributed
 - Error terms (residuals) follow a normal distribution
 - Validated using Q-Q plots and distribution plots
-
+- ![Regression Residual Plot](images/assumption-2.png)
 ### 3. Error terms are independent of each other
 - Error terms are independent of each other
 - No autocorrelation between residuals
 - Checked using residual plots over time
-
+- ![Regression Residual Plot](images/assumption-3.png)
 ### 4. Error terms have constant variance
 - Error terms have constant variance across all levels of independent variables (homoscedasticity)
 - Validated using residuals vs fitted values plots
+- ![Regression Residual Plot](images/assumption-4.png)
 
 ---
 
