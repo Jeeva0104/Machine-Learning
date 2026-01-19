@@ -297,6 +297,178 @@ P(T > 12.832) tells us: Assuming the null hypothesis is true (meaning that tempe
 **Significance Level:**
 α = 0.05 (we accept 5% chance of making a Type I error - rejecting a true null hypothesis)
 
+
+
+* **H₀ (Null Hypothesis):** βᵢ = 0
+  (This variable has *no linear effect* on the target, given other variables.)
+* **H₁ (Alternative Hypothesis):** βᵢ ≠ 0
+
+The **p-value** answers:
+
+Lower p-value ⇒ stronger evidence **against** H₀.
+
+We usually compare with:
+
+* **α = 0.05**
+
+---
+
+## Interpreting each row in your result
+
+I’ll go variable by variable.
+
+---
+
+### **Intercept (const)**
+
+```
+coef = -4.9224
+t = -1.672
+p = 0.096
+```
+
+* p-value **0.096 > 0.05**
+* ❌ Fail to reject H₀
+* The intercept is **not statistically significant**
+
+**Meaning:**
+We don’t have enough evidence that the baseline value (when all predictors are zero) is different from zero.
+👉 This is usually **not a concern**, because intercepts are rarely interpreted substantively.
+
+---
+
+### **Age**
+
+```
+coef = 0.2924
+t = 4.953
+p = 0.000
+```
+
+* p-value **< 0.05**
+* ✅ Reject H₀
+* **Statistically significant**
+
+**Meaning:**
+Age has a **significant positive effect** on the target variable.
+
+Interpretation of coefficient:
+
+> Holding all other variables constant, a 1-unit increase in Age increases the predicted outcome by **0.2924 units** on average.
+
+The very small p-value means:
+
+> Observing a t-statistic as large as 4.953 under β = 0 is extremely unlikely.
+
+---
+
+### **Income_k$**
+
+```
+coef = 0.7782
+t = 23.712
+p = 0.000
+```
+
+* p-value **≪ 0.05**
+* ✅ Reject H₀ (very strongly)
+* **Highly significant**
+
+**Meaning:**
+Income is an **extremely strong predictor**.
+
+The huge t-value (23.7) implies:
+
+* Very low standard error
+* Very strong signal relative to noise
+
+👉 This is one of the **most important variables** in your model.
+
+---
+
+### **Education_Level**
+
+```
+coef = 10.8234
+t = 7.178
+p = 0.000
+```
+
+* p-value **< 0.05**
+* ✅ Reject H₀
+* **Statistically significant**
+
+**Meaning:**
+Education level has a **large and statistically reliable effect**.
+
+Interpretation:
+
+> A one-unit increase in Education_Level increases the outcome by **~10.82 units**, holding other variables constant.
+
+---
+
+### **Purchased**
+
+```
+coef = -0.5656
+t = -0.311
+p = 0.756
+```
+
+
+* p-value **0.756 ≫ 0.05**
+* ❌ Fail to reject H₀
+* **Not statistically significant**
+
+**Meaning:**
+There is **no evidence** that `Purchased` has a linear effect on the target once other variables are included.
+
+Even though the coefficient is negative, it is:
+
+* Very small relative to its standard error
+* Likely due to random variation
+
+👉 You **cannot** claim any effect here.
+
+---
+
+### **Customer_Type_B**
+
+```
+coef = 0.2507
+t = 0.158
+p = 0.875
+```
+
+* p-value **0.875 ≫ 0.05**
+* ❌ Fail to reject H₀
+* **Not statistically significant**
+
+**Meaning:**
+Being Customer Type B does **not** significantly change the predicted outcome compared to the reference category.
+
+The t-statistic is close to zero → coefficient is mostly noise.
+
+--- 
+
+## Final takeaway (model-level interpretation)
+
+* **Significant predictors:**
+  ✅ Age
+  ✅ Income_k$
+  ✅ Education_Level
+
+* **Non-significant predictors:**
+  ❌ Purchased
+  ❌ Customer_Type_B
+  ❌ Intercept (usually ignored)
+
+### Practical meaning:
+
+Only **Age, Income, and Education** provide statistically reliable information for predicting your target variable **after controlling for others**.
+
+
+
 ---
 
 ## Student Exam Score Example
